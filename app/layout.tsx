@@ -6,6 +6,7 @@ import Footer from './components/Footer/Footer';
 export const metadata = {
   title: 'Lily Decor',
   description: 'Cake cover dough',
+  icons: '/images/logo.png'
 }
 
 
