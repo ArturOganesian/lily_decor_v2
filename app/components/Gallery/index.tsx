@@ -1,6 +1,6 @@
 "use client"
 import Image from 'next/image';
-import { Fade } from "react-awesome-reveal";
+import Fade from "react-awesome-reveal";
 
 
 const Gallery = () => {

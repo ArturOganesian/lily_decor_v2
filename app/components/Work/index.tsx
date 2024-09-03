@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { Fade } from "react-awesome-reveal";
+import Fade from "react-awesome-reveal";
 import sugar_flower from "@/public/images/Features/create_flower.jpg";
 
 interface cardDataType {
@@ -36,7 +36,7 @@ const cardData: cardDataType[] = [
 const Work = () => {
   return (
     <div className="">
-      <div className="mx-auto max-w-7xl py-40 px-6" id="about-section">
+      <div className="mx-auto max-w-7xl pt-40 px-6" id="about-section">
         <div className="text-center mb-14">
           <Fade
             direction={"up"}

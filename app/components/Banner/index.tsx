@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import hero_img from '@/public/images/Banner/hero_img.jpg';
 import dough_img from '@/public/images/Banner/dough.png'
-import { Fade } from "react-awesome-reveal";
+import Fade from "react-awesome-reveal";
 
 const Banner = () => {
   return (

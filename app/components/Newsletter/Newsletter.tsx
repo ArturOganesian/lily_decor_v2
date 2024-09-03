@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image";
-import { Fade } from "react-awesome-reveal";
+import Fade from "react-awesome-reveal";
 
 const Newsletter = () => {
     return (
@@ -45,7 +45,7 @@ const Newsletter = () => {
                             <Image src={'/images/Newsletter/onion.svg'} alt="onion-image" width={300} height={122} />
                         </div>
                         <div className="absolute top-[30%] right-[-23%] hidden lg:block">
-                            <Image src={'/images/Newsletter/lec.svg'} alt="lettuce-image" width={300} height={122} />
+                            {/* <Image src={'/images/Newsletter/lec.svg'} alt="lettuce-image" width={300} height={122} /> */}
                         </div>
                         <div className="absolute bottom-[10%] left-[0%]">
                             <Image src={'/images/Newsletter/yellow.svg'} alt="yellow-image" width={59} height={59} />

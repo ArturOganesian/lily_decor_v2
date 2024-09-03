@@ -42,6 +42,15 @@ module.exports = {
       "9xl": ["8rem", { lineHeight: "1" }],
     },
     extend: {},
+    screens: {
+      sm: '576px',
+      md: '768px',
+      lg: '992px',
+      xl: '1200px',
+      xxl: '1400px',
+      '3xl': '1600px',
+      '4xl': '1800px',
+    },
   },
   plugins: [],
 };
