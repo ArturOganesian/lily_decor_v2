@@ -24,7 +24,8 @@ module.exports = {
       textbl: "#363636",
       footerlinks: 'rgba(54, 54, 54, 0.9)',
       bordertop: 'rgba(105, 120, 131, 0.16)',
-      darkgrey: 'rgba(44, 9, 11, 0.8)'
+      darkgrey: 'rgba(44, 9, 11, 0.8)',
+      green: "green"
     },
     fontSize: {
       xs: ["0.75rem", { lineHeight: "1rem" }],

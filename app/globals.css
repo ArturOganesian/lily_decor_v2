@@ -148,3 +148,34 @@ html:not([data-scroll="0"]) .navbar {
 .error_message{
   @apply text-xs text-[red] pl-3;
 }
+
+.react-multi-carousel-dot-list{
+   position: relative !important;
+}
+.slick-next{
+  right: -30px !important;
+  color: #df6751 !important;
+  font-weight: 900 !important;
+
+}
+.slick-prev{
+  left: -50px !important;
+  color: #df6751 !important;
+}
+.ant-carousel .slick-prev,
+.ant-carousel .slick-next,
+.ant-carousel .slick-prev:hover,
+.ant-carousel .slick-next:hover {
+  font-size: inherit;
+}
+
+.slick-next:before{
+  content: none !important;
+}
+.slick-prev:before{
+  content: none !important;
+}
+
+.product_card {
+  @apply !flex !flex-col !items-center bg-darkpink !w-[220px] py-3 rounded-3xl;
+}
