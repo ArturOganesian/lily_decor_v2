@@ -1,6 +1,6 @@
 "use client";
 import { Carousel } from "antd";
-import Fade from "react-awesome-reveal";
+import {Fade} from "react-awesome-reveal";
 import { ConfigProvider } from "antd";
 import ProductCard from "./ProductCard";
 import { products } from "@/app/mockDatas/datas";

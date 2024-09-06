@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import Fade from "react-awesome-reveal";
+import {Fade} from "react-awesome-reveal";
 import sugar_flower from "@/public/images/Features/create_flower.jpg";
 
 interface cardDataType {

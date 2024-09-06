@@ -1,6 +1,6 @@
 "use client"
 import Image from 'next/image';
-import Fade from "react-awesome-reveal";
+import {Fade} from "react-awesome-reveal";
 import expert_img from '@/public/images/Cook/expert.jpg';
 import cake_img from '@/public/images/Cook/cake_right.png'
 

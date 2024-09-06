@@ -20,3 +20,10 @@ export const formValidationSchema = Yup.object().shape({
       "We need your phone number to cotact you faster"
     ),
   });
+
+
+  export const subscriptionValidationSchema = Yup.object().shape({
+    subscriber_email: Yup.string()
+      .required("Please fill your email up")
+      .email("Invalid email"),
+  });

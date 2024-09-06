@@ -6,8 +6,8 @@ import { formValidationSchema as validationSchema } from "@/app/helpers/schemas/
 import emailjs from "@emailjs/browser";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
-import  Fade  from "react-awesome-reveal";
-import { toast } from "react-toastify";
+import { Fade } from "react-awesome-reveal";
+import { toast, ToastContainer } from "react-toastify";
 import cooking_process_img from "@/public/images/ContactUs/contactus.jpg";
 
 const Contact = () => {
@@ -47,6 +47,7 @@ const Contact = () => {
   });
 
   return (
+
     <div className="py-10 sm:py-20 bg-darkpink">
       <div className="mx-auto max-w-2xl lg:max-w-7xl sm:py-4 lg:px-8">
         <div className="text-center">
@@ -75,22 +76,20 @@ const Contact = () => {
         </div>
 
         <div className="flex lg:flex-row flex-col justify-center lg:justify-between gap-4 items-center mt-5">
-          
-          
-            <Image
-              src={cooking_process_img}
-              width={536}
-              height={708}
-              className="h-[708px] w-[536px] rounded-e-full hidden lg:block" 
-              alt="Cooking process ilustration"
-            />
-            <Image
-              src={cooking_process_img}
-              width={400}
-              height={300}
-              className="h-[400px] w-[300px] rounded-t-full lg:hidden block" 
-              alt="Cooking process ilustration"
-            />
+          <Image
+            src={cooking_process_img}
+            width={536}
+            height={708}
+            className="h-[708px] w-[536px] rounded-e-full hidden lg:block"
+            alt="Cooking process ilustration"
+          />
+          <Image
+            src={cooking_process_img}
+            width={400}
+            height={300}
+            className="h-[400px] w-[300px] rounded-t-full lg:hidden block"
+            alt="Cooking process ilustration"
+          />
           <form
             ref={form}
             onSubmit={formik.handleSubmit}

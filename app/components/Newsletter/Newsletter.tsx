@@ -1,64 +1,118 @@
-"use client"
+"use client";
+import React, { useState } from "react";
 import Image from "next/image";
-import Fade from "react-awesome-reveal";
+import { useFormik } from "formik";
+import { subscriptionValidationSchema as validationSchema } from "@/app/helpers/schemas/validationSchema";
+import { Fade } from "react-awesome-reveal";
+import { subscribe } from "@/app/actions/subscribe";
+import { toast, ToastContainer } from "react-toastify";
+import cake_pic from "@/public/images/Cook/cake_right.png";
+import { EnvelopeIcon } from "@heroicons/react/24/outline";
+import "react-toastify/dist/ReactToastify.css";
 
 const Newsletter = () => {
-    return (
-        <div className='relative'>
-            <div className="mx-auto max-w-2xl bg-pink br-50 md:max-w-7xl mt-48 rounded-lg">
-                <div className="grid grid-cols-1 gap-y-10 gap-x-6 md:grid-cols-12 xl:gap-x-8">
+  const notify = (value: string) => toast(value);
 
-                    {/* COLUMN-1 */}
-                    <div className="col-span-7">
-                        <div className="m-10 lg:ml-32 lg:mt-20 lg:mb-20">
-                            <Fade direction={'up'} delay={400} cascade damping={1e-1} triggerOnce={true}>
-                                <h3 className="text-lg font-normal text-white mb-3 ls-51"> NEWSLETTER </h3>
-                            </Fade>
-                            <Fade direction={'up'} delay={800} cascade damping={1e-1} triggerOnce={true}>
-                                <h3 className="text-3xl md:text-5xl font-semibold text-white mb-8">
-                                    Subscribe our <br /> newsletter.
-                                </h3>
-                            </Fade>
+  const handleSubmit = async (value: { subscriber_email: string }) => {
+    const subscribeEmail = await subscribe({
+      email: value.subscriber_email,
+    });
 
-                            <div>
-                                <Fade direction={'up'} delay={1200} cascade damping={1e-1} triggerOnce={true}>
-                                    <div className="relative text-white focus-within:text-white flex flex-row-reverse shadow-fi rounded-full">
-                                        <input type="Email address" name="q" className="py-6 sm:py-8 text-sm w-full text-black bg-gray-900 rounded-full pl-4 par-87 focus:outline-none focus:text-black" placeholder="@ enter your email-address" autoComplete="off" />
-                                        <div className="absolute inset-y-0 right-0 flex items-center pr-2">
-                                            <button type="submit" className="p-1 focus:outline-none focus:shadow-outline">
-                                                <Image src={'/images/Newsletter/arrow.svg'} alt="inputicon" width={57} height={71} />
-                                            </button>
-                                        </div>
-                                    </div>
-                                </Fade>
-                            </div>
+    try {
+      if (subscribeEmail?.error !== undefined) {
+        throw new Error(subscribeEmail.error);
+      } else {
+        notify("Your have successfully subscribed");
+      }
+    } catch (error: any) {
+      notify(error.message);
+    }
+  };
 
-                        </div>
-                    </div>
+  const formik = useFormik({
+    initialValues: {
+      subscriber_email: "",
+    },
+    onSubmit: handleSubmit as any,
+    validationSchema,
+  });
+  return (
+    <div className="relative">
+      <div className="mx-auto max-w-2xl bg-pink br-50 md:max-w-7xl mt-48 rounded-lg">
+        <div className="flex items-center">
+          <ToastContainer />
 
-                    {/* COLUMN-2 */}
-                    <div className="col-span-5 relative hidden md:block">
-                        <div>
-                            <Image src={'/images/Newsletter/soup.svg'} alt="soup-image" width={626} height={602} className='-mt-24' />
-                        </div>
-                        <div className="absolute top-[78%]">
-                            <Image src={'/images/Newsletter/onion.svg'} alt="onion-image" width={300} height={122} />
-                        </div>
-                        <div className="absolute top-[30%] right-[-23%] hidden lg:block">
-                            {/* <Image src={'/images/Newsletter/lec.svg'} alt="lettuce-image" width={300} height={122} /> */}
-                        </div>
-                        <div className="absolute bottom-[10%] left-[0%]">
-                            <Image src={'/images/Newsletter/yellow.svg'} alt="yellow-image" width={59} height={59} />
-                        </div>
-                        <div className="absolute bottom-[20%] right-[20%]">
-                            <Image src={'/images/Newsletter/blue.svg'} alt="blue-image" width={25} height={25} />
-                        </div>
-                    </div>
-
-                </div>
+          <div className="flex flex-col gap-5 pl-10">
+            <div>
+              <Fade
+                direction={"up"}
+                delay={400}
+                cascade
+                damping={1e-1}
+                triggerOnce={true}
+              >
+                <h2 className="text-lightpink text-2xl font-normal mb-3 tracking-widest uppercase ls-51">
+                  We always keep update our products
+                </h2>
+              </Fade>
             </div>
+
+            <div>
+              <Fade
+                direction={"up"}
+                delay={400}
+                cascade
+                damping={1e-1}
+                triggerOnce={true}
+              >
+                <p className="text-lightpink text-md font-normal mb-3  tracking-wider">
+                  Subscribe to newsleeter, be the first who will use new product
+                </p>
+              </Fade>
+            </div>
+
+            <div>
+              <form onSubmit={formik.handleSubmit}>
+                <div className="relative w-[400px]">
+                  <input
+                    type="email"
+                    placeholder="Subscribe to newsletters"
+                    className="w-full h-[60px] outline-none rounded-xl p-4 text-sm font-light tracking-widest"
+                    name="subscriber_email"
+                    id="subscriber_email"
+                    onChange={formik.handleChange}
+                    value={formik.values.subscriber_email}
+                  />
+                  {formik.touched.subscriber_email &&
+                    formik.errors.subscriber_email && (
+                      <span>{formik.errors.subscriber_email}</span>
+                    )}
+                  <button
+                    className="absolute top-[18px] right-8 w-6 h-6"
+                    type="submit"
+                  >
+                    <EnvelopeIcon className="text-pink  font-sm" />
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div className="col-span-5 relative hidden md:block">
+            <div>
+              <Image
+                src={cake_pic}
+                alt="soup-image"
+                width={526}
+                height={502}
+                className="mb-5"
+              />
+            </div>
+          </div>
         </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
 export default Newsletter;
