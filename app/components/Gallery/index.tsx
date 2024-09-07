@@ -1,11 +1,62 @@
 "use client";
 import { Carousel } from "antd";
-import {Fade} from "react-awesome-reveal";
+import { Fade } from "react-awesome-reveal";
 import { ConfigProvider } from "antd";
 import ProductCard from "./ProductCard";
 import { products } from "@/app/mockDatas/datas";
 
 const Gallery = () => {
+  const carouselResponsive = {
+  
+
+    responsive: [  {
+      breakpoint: 1300,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: false,
+      },
+    },
+
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 1000,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 2,
+          infinite: true,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 450,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: false,
+        },
+      },
+    ],
+  };
   return (
     <div id="gallery-section">
       <div className="mx-auto max-w-2xl lg:max-w-7xl sm:py-4 lg:px-8 mt-20 md:pt-24">
@@ -46,6 +97,7 @@ const Gallery = () => {
             }}
           >
             <Carousel
+            responsive={carouselResponsive.responsive}
               slidesToShow={5}
               dots={false}
               arrows={true}
@@ -53,7 +105,12 @@ const Gallery = () => {
               className=""
             >
               {products.map(({ img, title }, index) => (
-                <ProductCard img={img} title={title} index={index} />
+                <ProductCard
+                  img={img}
+                  title={title}
+                  key={index}
+                  index={index}
+                />
               ))}
             </Carousel>
           </ConfigProvider>

@@ -153,13 +153,11 @@ html:not([data-scroll="0"]) .navbar {
    position: relative !important;
 }
 .slick-next{
-  right: -30px !important;
   color: #df6751 !important;
   font-weight: 900 !important;
 
 }
 .slick-prev{
-  left: -50px !important;
   color: #df6751 !important;
 }
 .ant-carousel .slick-prev,
@@ -178,4 +176,10 @@ html:not([data-scroll="0"]) .navbar {
 
 .product_card {
   @apply !flex !flex-col !items-center bg-darkpink !w-[220px] py-3 rounded-3xl;
+}
+
+
+.slick-slide :nth-child(1){
+  display: flex;
+  justify-content: center;
 }
